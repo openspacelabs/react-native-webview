@@ -17,6 +17,7 @@ export interface WebViewCommands {
   postMessage: Function;
   injectJavaScript: Function;
   loadUrl: Function;
+  cleanupNativeView: Function;
 }
 
 export interface CustomUIManager extends UIManagerStatic {

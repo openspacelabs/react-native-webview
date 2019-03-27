@@ -328,4 +328,13 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   }
 }
 
+/**
+ * Author: hpentimalli@wabe.io
+ * Clean up the underlying native view as a temporary workaround to avoid memory leaks
+ */
+- (void)cleanup
+{
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+}
+
 @end

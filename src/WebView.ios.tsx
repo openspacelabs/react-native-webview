@@ -201,6 +201,20 @@ class WebView extends React.Component<IOSWebViewProps, State> {
   };
 
   /**
+   * Cleans up the native webview component. Temporary workaround
+   * as it seems the webview is not getting fully released when the RN component
+   * gets unmounted.
+   * Author: hpentimalli@wabe.io
+   */
+  cleanupNativeView = () => {
+    UIManager.dispatchViewManagerCommand(
+      this.getWebViewHandle(),
+      this.getCommands().cleanupNativeView,
+      null,
+    );
+  }
+
+  /**
    * Injects a javascript string into the referenced WebView. Deliberately does not
    * return a response because using eval() to return a response breaks this method
    * on pages with a Content Security Policy that disallows eval(). If you need that

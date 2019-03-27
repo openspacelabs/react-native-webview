@@ -35,5 +35,6 @@ shouldStartLoadForRequest:(NSMutableDictionary<NSString *, id> *)request
 - (void)stopLoading;
 - (void)postMessage:(NSString *)message;
 - (void)injectJavaScript:(NSString *)script;
+- (void)cleanup;
 
 @end

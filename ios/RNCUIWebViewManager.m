@@ -117,6 +117,18 @@ RCT_EXPORT_METHOD(injectJavaScript:(nonnull NSNumber *)reactTag script:(NSString
   }];
 }
 
+RCT_EXPORT_METHOD(cleanupNativeView:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, RNCUIWebView *> *viewRegistry) {
+        RNCUIWebView *view = viewRegistry[reactTag];
+        if (![view isKindOfClass:[RNCUIWebView class]]) {
+            RCTLogError(@"Invalid view returned from registry, expecting RNCUIWebView, got: %@", view);
+        } else {
+            [view cleaup];
+        }
+    }];
+}
+
 #pragma mark - Exported synchronous methods
 
 - (BOOL)webView:(__unused RNCUIWebView *)webView
