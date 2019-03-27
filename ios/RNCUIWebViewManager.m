@@ -124,7 +124,7 @@ RCT_EXPORT_METHOD(cleanupNativeView:(nonnull NSNumber *)reactTag)
         if (![view isKindOfClass:[RNCUIWebView class]]) {
             RCTLogError(@"Invalid view returned from registry, expecting RNCUIWebView, got: %@", view);
         } else {
-            [view cleaup];
+            [view cleanup];
         }
     }];
 }
